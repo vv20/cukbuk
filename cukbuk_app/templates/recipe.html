@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    {% include 'bootstrap.html' %}
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        <h1>{{ recipe.name }}</h1>
+
+        <p>
+        {{ recipe.description }}
+
+        <br>
+
+        <a href="/edit/{{ recipe.slug }}">Update</a>
+        </p>
+    </div>
+</body>

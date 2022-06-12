@@ -1,0 +1,5 @@
+*.sqlite3
+*.swp
+media/images/*
+*__pycache__*
+*venv*
