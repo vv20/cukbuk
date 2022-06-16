@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'cukbuk_db',
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['localhost'],
+        'HOST': os.environ['DB_HOST'],
         'PORT': os.environ['3306'],
     }
 }
