@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'image_uploader_widget',
+    'djrichtextfield',
 
     'cukbuk_app',
 ]
@@ -118,3 +118,24 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+DJRICHTEXTFIELD_CONFIG = {
+    #'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
+    'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
+    'init_template': 'djrichtextfield/init/ckeditor.js',
+    'settings': {  # CKEditor
+        'toolbar': [
+            {
+                'items': ['Format', '-', 'Bold', 'Italic', '-','RemoveFormat']
+            },
+            {
+                'items': ['Link', 'Unlink', 'Image', 'Table']
+            },
+            {
+                'items': ['Source']
+            }
+        ],
+        'format_tags': 'p;h1;h2;h3',
+        'width': 700
+    }
+}
