@@ -15,7 +15,13 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def edit(request, slug):
-    if (request.method == 'GET'):
+    return {
+            'GET': __edit_get,
+            'POST': __edit_post,
+            'DELETE': __edit_delete,
+    }.get(request.method)(request, slug)
+
+def __edit_get(request, slug):
         if slug == 'new':
             form = RecipeForm()
         else:
@@ -23,14 +29,19 @@ def edit(request, slug):
             form = RecipeForm(instance=recipe)
         template = loader.get_template('edit.html')
         return HttpResponse(template.render({'form': form}, request))
+
+def __edit_post(request, slug):
+    if Recipe.objects.filter(slug=slug):
+        recipe = Recipe.objects.get(slug=slug)
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
     else:
         form = RecipeForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(reverse('index'))
+    if form.is_valid():
+        form.save()
+    return HttpResponseRedirect(reverse('index'))
 
-def deleterecord(request, id):
-    recipe = Recipe.objects.get(id=id)
+def __edit_delete(request, slug):
+    recipe = Recipe.objects.get(slug=slug)
     recipe.delete()
     return HttpResponseRedirect(reverse('index'))
 
