@@ -1,11 +1,13 @@
 import random
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from .models import Recipe
 from .forms import RecipeForm
 
+@login_required
 def index(request):
     recipes = Recipe.objects.all()
     template = loader.get_template('index.html')
@@ -14,6 +16,7 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+@login_required
 def edit(request, slug):
     return {
             'GET': __edit_get,
@@ -45,6 +48,7 @@ def __edit_delete(request, slug):
     recipe.delete()
     return HttpResponseRedirect(reverse('index'))
 
+@login_required
 def recipe(request, slug):
     recipe = Recipe.objects.get(slug=slug)
     template = loader.get_template('recipe.html')
@@ -53,6 +57,7 @@ def recipe(request, slug):
     }
     return HttpResponse(template.render(context, request))
 
+@login_required
 def randomrecipe(request):
     recipes = list(Recipe.objects.all())
     recipe = random.choice(recipes)

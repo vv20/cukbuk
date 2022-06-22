@@ -139,3 +139,5 @@ DJRICHTEXTFIELD_CONFIG = {
         'width': 700
     }
 }
+
+LOGIN_URL = '/login'
