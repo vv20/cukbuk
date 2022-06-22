@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<head>
-    {% include 'head_common.html' %}
-</head>
-<body>
-    {% include 'header.html' %}
-    <div class="container">
-        <h1>{{ recipe.name }}</h1>
-        {{ recipe.safe_description }}
-        <a href="/edit/{{ recipe.slug }}">Update</a>
-    </div>
-</body>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ recipe.name }}</h1>
+{{ recipe.safe_description }}
+<a href="/edit/{{ recipe.slug }}">Update</a>
+{% endblock %}

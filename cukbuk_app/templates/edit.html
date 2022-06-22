@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<head>
-    {% include 'head_common.html' %}
-</head>
-<body>
-    {% include 'header.html' %}
-    <div class="container">
-        <h1>Add Recipe</h1>
+{% extends 'base.html' %}
 
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-</body>
+{% block content %}
+
+{{ form.media }}
+
+<h1>Add Recipe</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
