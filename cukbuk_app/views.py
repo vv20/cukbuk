@@ -9,8 +9,13 @@ from .forms import RecipeForm
 
 @login_required
 def index(request):
-    recipes = Recipe.objects.all()
     template = loader.get_template('index.html')
+    return HttpResponse(template.render({}, request))
+
+@login_required
+def recipes(request):
+    recipes = Recipe.objects.all()
+    template = loader.get_template('recipes.html')
     context = {
             'recipes': recipes
     }
