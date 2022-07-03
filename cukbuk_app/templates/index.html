@@ -2,6 +2,23 @@
 
 {% block content %}
 <h1>Recipes</h1>
+<div id="tags" class="row">
+    <div class="col-md-2">
+        <p>Search by:</p>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            {% for tag in tags %}
+            <div class="col-md-2" >
+                <button onclick="toggleTag('{{ tag.name }}')" id="button-{{ tag.name }}" class="filter-button-off">
+                    {{ tag.name }}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br/>
 <div id="recipeList" class="row">
 </div>
 {% endblock %}

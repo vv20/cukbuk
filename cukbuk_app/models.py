@@ -3,15 +3,13 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from djrichtextfield.models import RichTextField
-
-class Tag(models.Model):
-    name = models.CharField(max_length=255)
+from taggit.managers import TaggableManager
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
     description = RichTextField()
     slug = models.SlugField(null=False, unique=True)
-#    tags = models.ManyToManyField(Tag)
+    tags = TaggableManager()
 
     def get_absolute_url(self):
         return reverse('recipe', kwargs={'slug': self.slug})

@@ -1,3 +1,25 @@
+:root {
+    --primary-colour: #008000;
+    --passive-colour: #adad85;
+}
+
 .preview {
-    border-style: solid
+    border-style: solid;
+}
+
+.filter-button-off {
+    background-color: var(--passive-colour);
+}
+
+.filter-button-on {
+    background-color: var(--primary-colour);
+}
+
+.filter-button-off, .filter-button-on {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
