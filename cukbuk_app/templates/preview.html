@@ -1,7 +1,8 @@
-<div class="preview container-fluid">
-    <img src="{{ recipe.image.url }}" alt="connect" style="max-height:100px">
-    <br/>
-    <h2>
-        <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
-    </h2>
-</div>
+<a href="{{ recipe.get_absolute_url }}">
+	<div class="preview">
+	    <img src="{{ recipe.image }}" alt="connect" style="width:100%">
+	    <h2 style="padding:2px 16px">
+		{{ recipe.name }}
+	    </h2>
+	</div>
+</a>

@@ -8,6 +8,7 @@ from taggit.managers import TaggableManager
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
     description = RichTextField()
+    image = models.CharField(max_length=255, default='/default_recipe_image.png')
     slug = models.SlugField(null=False, unique=True)
     tags = TaggableManager()
 
